@@ -1,0 +1,226 @@
+/* ==========================================================================
+   CUSTOM SCROLLBAR & BASE UTILITIES
+   ========================================================================== */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   POP BADGES KEYFRAME ANIMATION
+   ========================================================================== */
+@keyframes popScaleLoop {
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    12% {
+        transform: scale(1.04);
+        opacity: 1;
+    }
+
+    18% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    82% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    92% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+}
+
+.animate-pop-badge {
+    animation: popScaleLoop 5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    transform-origin: center;
+}
+
+.badge-delay-1 {
+    animation-delay: 0s;
+}
+
+.badge-delay-2 {
+    animation-delay: 0.25s;
+}
+
+.badge-delay-3 {
+    animation-delay: 0.5s;
+}
+
+/* ==========================================================================
+   SWEEP LINE ANIMATION FOR ABOUT CAROUSEL
+   ========================================================================== */
+@keyframes sweepLeftToRight {
+    0% {
+        left: -25%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 125%;
+        opacity: 0;
+    }
+}
+
+@keyframes sweepRightToLeft {
+    0% {
+        left: 125%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        left: -25%;
+        opacity: 0;
+    }
+}
+
+.animate-sweep-ltr {
+    animation: sweepLeftToRight 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-sweep-rtl {
+    animation: sweepRightToLeft 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ==========================================================================
+   MORTARBOARD (TOPI TOGA) SVG ANIMATIONS
+   ========================================================================== */
+@keyframes tasselSwing {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes capFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-4px) rotate(-2deg);
+    }
+}
+
+.animate-tassel {
+    animation: tasselSwing 1.8s ease-in-out infinite;
+    transform-origin: 32px 26px;
+}
+
+.animate-cap-float {
+    animation: capFloat 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   LAYERS (COURSES ICON) SVG ANIMATIONS
+   ========================================================================== */
+@keyframes layerSlideTop {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-3.5px);
+    }
+}
+
+@keyframes layerSlideMid {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-1.5px);
+    }
+}
+
+.animate-layer-top {
+    animation: layerSlideTop 2.2s ease-in-out infinite;
+}
+
+.animate-layer-mid {
+    animation: layerSlideMid 2.2s ease-in-out infinite 0.25s;
+}
+
+/* ==========================================================================
+   GLOBE & ORBIT SVG ANIMATIONS
+   ========================================================================== */
+@keyframes globeOrbit {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes globePulseRing {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+.animate-globe-orbit {
+    animation: globeOrbit 7s linear infinite;
+    transform-origin: 32px 32px;
+}
+
+.animate-globe-pulse {
+    animation: globePulseRing 2.5s ease-in-out infinite;
+    transform-origin: 32px 32px;
+}

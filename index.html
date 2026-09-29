@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Portal Learning HMPS SI - Himpunan Mahasiswa Sistem Informasi</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-400 selection:text-slate-900 min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <nav id="mainNavbar" class="sticky top-0 z-50 w-full transition-all duration-300 ease-out bg-[#0d3b28]">
+        <div id="navbarContainer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300">
+            <div id="navbarInner"
+                class="flex items-center justify-between h-16 sm:h-20 transition-all duration-300 ease-out">
+
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group">
+                    <div
+                        class="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-amber-400 flex items-center justify-center text-[#0d3b28] font-extrabold shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-graduation-cap text-lg sm:text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-base sm:text-lg lg:text-xl font-bold tracking-tight text-white block">HMPS SI
+                            Learn Course</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <div
+                    class="hidden md:flex items-center bg-white/95 backdrop-blur-md px-6 py-2 rounded-full text-[#0d3b28] font-semibold text-xs lg:text-sm shadow-md gap-3">
+                    <a href="#home" class="hover:text-amber-600 transition-colors">Home</a>
+                    <span class="text-slate-300 font-normal">/</span>
+                    <a href="#courses" class="hover:text-amber-600 transition-colors">Courses</a>
+                    <span class="text-slate-300 font-normal">/</span>
+                    <a href="#about" class="hover:text-amber-600 transition-colors">About</a>
+                </div>
+
+                <!-- Contact Us Dropdown Button & Menu -->
+                <div id="contactDropdownWrapper" class="hidden md:flex items-center relative">
+                    <button onclick="toggleContactMenu()"
+                        class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#0d3b28] bg-white hover:bg-amber-300 transition-all shadow-md flex items-center gap-2 relative z-50">
+                        <span>Contact Us</span>
+                        <i id="contactChevron"
+                            class="fa-solid fa-chevron-up text-[10px] sm:text-xs transition-transform duration-300"></i>
+                    </button>
+
+                    <!-- Contact Us Floating Dropdown Card -->
+                    <div id="contactCard"
+                        class="opacity-0 scale-90 -translate-y-4 pointer-events-none transition-all duration-300 ease-out origin-top-right absolute right-0 top-12 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-100 p-5 z-40">
+                        <div class="pb-3 mb-3 border-b border-slate-100">
+                            <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-900">HUBUNGI & IKUTI
+                                KAMI</h4>
+                            <p class="text-[11px] text-slate-500 font-medium mt-0.5">Pilih saluran komunikasi resmi HMPS
+                                SI</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <a href="#" target="_blank"
+                                class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition-all group">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-[#12c06a] text-white flex items-center justify-center text-lg shadow-sm shrink-0">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h5
+                                            class="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                                            WhatsApp (Group Chat)</h5>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">Komunitas & Diskusi Mahasiswa SI
+                                        </p>
+                                    </div>
+                                </div>
+                                <i
+                                    class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-slate-500 transition-all"></i>
+                            </a>
+
+                            <a href="#" target="_blank"
+                                class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition-all group">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-[#12c06a] text-white flex items-center justify-center text-lg shadow-sm shrink-0">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h5
+                                            class="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                                            Saluran WhatsApp HMPS SI</h5>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">Pengumuman & Update Info Resmi</p>
+                                    </div>
+                                </div>
+                                <i
+                                    class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-slate-500 transition-all"></i>
+                            </a>
+
+                            <a href="#" target="_blank"
+                                class="flex items-center justify-between p-3 rounded-2xl bg-pink-50/60 hover:bg-pink-100/60 transition-all group border border-pink-100/60">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center text-lg shadow-sm shrink-0">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div>
+                                        <h5
+                                            class="text-xs font-bold text-pink-600 group-hover:text-pink-700 transition-colors">
+                                            Instagram HMPS SI</h5>
+                                        <p class="text-[10px] text-slate-500 mt-0.5">Dokumentasi & Kegiatan Mahasiswa
+                                        </p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-pink-500 transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()"
+                    class="md:hidden p-2 rounded-xl text-emerald-100 hover:text-white hover:bg-emerald-800/50 focus:outline-none">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu"
+            class="hidden md:hidden border-t border-emerald-800/80 bg-[#08291c] px-4 pt-3 pb-6 space-y-3 text-white">
+            <a href="#home" onclick="toggleMobileMenu()"
+                class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-emerald-800/50">Home</a>
+            <a href="#courses" onclick="toggleMobileMenu()"
+                class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-emerald-800/50">Courses</a>
+            <a href="#about" onclick="toggleMobileMenu()"
+                class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-emerald-800/50">About</a>
+            <div class="pt-2 flex flex-col gap-2 border-t border-emerald-800/60">
+                <p class="text-[11px] font-extrabold text-emerald-400 px-3 pt-1 uppercase tracking-wider">Contact Us</p>
+                <a href="#" target="_blank"
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-white hover:bg-emerald-800/50">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> Saluran WhatsApp HMPS SI
+                </a>
+                <a href="#" target="_blank"
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-white hover:bg-emerald-800/50">
+                    <i class="fa-solid fa-users text-emerald-400 text-sm"></i> Group Chat WhatsApp HMPS SI
+                </a>
+                <a href="#" target="_blank"
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-white hover:bg-emerald-800/50">
+                    <i class="fa-brands fa-instagram text-pink-400 text-sm"></i> Instagram HMPS SI
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative z-10 bg-[#0d3b28] text-white py-12 sm:py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                <div class="lg:col-span-7 space-y-5 sm:space-y-7 text-left">
+                    <h1
+                        class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.15]">
+                        Himpunan Mahasiswa <br class="hidden sm:inline">
+                        Sistem Informasi <br class="hidden sm:inline">
+                        <span class="text-amber-400 sm:text-white">Learn Course</span>
+                    </h1>
+
+                    <p class="text-emerald-100/90 text-xs sm:text-base lg:text-lg max-w-xl leading-relaxed font-normal">
+                        Platform pembelajaran eksklusif dari Himpunan Mahasiswa Sistem Informasi yang dirancang untuk
+                        membantu mahasiswa mengembangkan keahlian akademik, keterampilan practical, dan kesiapan karir
+                        di industri teknologi.
+                    </p>
+
+                    <!-- Animated Tech Stack Showcase Bar -->
+                    <div class="max-w-md relative select-none pointer-events-none">
+                        <div
+                            class="flex items-center bg-white/95 backdrop-blur-md rounded-full p-1 sm:p-1.5 pl-4 sm:pl-6 shadow-xl border border-white/20">
+                            <div
+                                class="flex items-center gap-2 w-full py-1.5 sm:py-2.5 text-slate-700 text-xs sm:text-sm font-medium overflow-hidden">
+                                <span id="heroTypingText" class="text-[#0d3b28] font-bold tracking-wide"></span>
+                                <span class="w-0.5 h-3.5 sm:h-4 bg-emerald-600 animate-pulse shrink-0 -ml-1"></span>
+                            </div>
+                            <div
+                                class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#0d3b28] text-amber-400 flex items-center justify-center shrink-0 shadow-sm">
+                                <i class="fa-solid fa-magnifying-glass text-[10px] sm:text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-2">
+                        <a href="#courses"
+                            class="inline-flex items-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full text-[#0d3b28] bg-[#fbb01b] hover:bg-amber-400 font-bold text-xs sm:text-sm shadow-lg transition-all transform hover:scale-[1.02] active:scale-95">
+                            <span>Get Started</span>
+                            <div
+                                class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#0d3b28] text-amber-400 flex items-center justify-center text-[10px] sm:text-xs">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative flex justify-center items-center my-6 lg:my-0 py-6 sm:py-8">
+                    <div
+                        class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-emerald-800/50 shadow-2xl bg-emerald-900/50 shrink-0">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                            alt="Mahasiswa HMPS SI Belajar Bersama" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Floating Badge 1 (Mortarboard) -->
+                    <div
+                        class="absolute top-0 left-0 sm:-left-2 bg-white text-slate-800 px-3.5 sm:px-5 py-2 sm:py-3 rounded-full shadow-2xl flex items-center gap-2 sm:gap-3 border border-slate-100/80 backdrop-blur-sm animate-pop-badge badge-delay-1 scale-90 sm:scale-100 z-20">
+                        <div
+                            class="w-8 h-8 sm:w-11 sm:h-11 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0 shadow-inner border border-amber-200/60 p-1">
+                            <svg class="w-full h-full animate-cap-float" viewBox="0 0 64 64" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 12L4 26L32 40L60 26L32 12Z" fill="#F59E0B" stroke="#B45309"
+                                    stroke-width="2.5" stroke-linejoin="round" />
+                                <path d="M16 33.5V44C16 48 23.1634 52 32 52C40.8366 52 48 48 48 44V33.5" fill="#D97706"
+                                    stroke="#92400E" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="32" cy="26" r="3" fill="#78350F" />
+                                <g class="animate-tassel">
+                                    <path d="M32 26C38 27 46 32 46 38" stroke="#78350F" stroke-width="2.5"
+                                        stroke-linecap="round" />
+                                    <path d="M46 38V48" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round" />
+                                    <circle cx="46" cy="49" r="2.5" fill="#B45309" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="pr-1">
+                            <p class="text-xs sm:text-sm font-extrabold text-slate-900 leading-none">500+</p>
+                            <p class="text-[9px] sm:text-[11px] text-slate-500 font-medium mt-0.5 whitespace-nowrap">
+                                Certified Instructors</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2 (Courses Layer) -->
+                    <div
+                        class="absolute bottom-0 left-0 sm:-left-2 bg-white text-slate-800 px-3.5 sm:px-5 py-2 sm:py-3 rounded-full shadow-2xl flex items-center gap-2 sm:gap-3 border border-slate-100/80 backdrop-blur-sm animate-pop-badge badge-delay-2 scale-90 sm:scale-100 z-20">
+                        <div
+                            class="w-8 h-8 sm:w-11 sm:h-11 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0 shadow-inner border border-emerald-200/60 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 64 64" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 43L32 52L52 43" stroke="#059669" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path class="animate-layer-mid" d="M12 33.5L32 42.5L52 33.5" stroke="#0d3b28"
+                                    stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <g class="animate-layer-top">
+                                    <path d="M32 12L12 22L32 31L52 22L32 12Z" fill="#10B981" stroke="#047857"
+                                        stroke-width="2.5" stroke-linejoin="round" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="pr-1">
+                            <p class="text-xs sm:text-sm font-extrabold text-slate-900 leading-none">1,000+</p>
+                            <p class="text-[9px] sm:text-[11px] text-slate-500 font-medium mt-0.5 whitespace-nowrap">
+                                Courses</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 3 (Globe) -->
+                    <div
+                        class="absolute bottom-4 right-0 sm:-right-2 bg-white text-slate-800 px-3.5 sm:px-5 py-2 sm:py-3 rounded-full shadow-2xl flex items-center gap-2 sm:gap-3 border border-slate-100/80 backdrop-blur-sm animate-pop-badge badge-delay-3 scale-90 sm:scale-100 z-20">
+                        <div
+                            class="w-8 h-8 sm:w-11 sm:h-11 rounded-2xl bg-sky-50 flex items-center justify-center shrink-0 shadow-inner border border-sky-200/60 p-1">
+                            <svg class="w-full h-full" viewBox="0 0 64 64" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle class="animate-globe-pulse" cx="32" cy="32" r="19" fill="#E0F2FE"
+                                    stroke="#0284C7" stroke-width="2.5" />
+                                <path d="M13 32H51" stroke="#0369A1" stroke-width="2" stroke-linecap="round" />
+                                <ellipse cx="32" cy="32" rx="9" ry="19" stroke="#0369A1" stroke-width="2" />
+                                <g class="animate-globe-orbit">
+                                    <ellipse cx="32" cy="32" rx="25" ry="10" stroke="#38BDF8" stroke-width="2"
+                                        stroke-dasharray="4 3" transform="rotate(-28 32 32)" />
+                                    <circle cx="56" cy="21" r="3.5" fill="#0284C7" stroke="#FFFFFF" stroke-width="1" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="pr-1">
+                            <p class="text-xs sm:text-sm font-extrabold text-slate-900 leading-none">120k+</p>
+                            <p class="text-[9px] sm:text-[11px] text-slate-500 font-medium mt-0.5 whitespace-nowrap">
+                                Global Students</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE TECH STACK -->
+    <section
+        class="relative z-20 py-4 sm:py-5 border-y border-slate-200/80 bg-white/95 backdrop-blur-sm overflow-hidden shrink-0 shadow-sm">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <div
+                class="flex items-center gap-8 sm:gap-12 text-slate-500 font-semibold text-xs sm:text-sm uppercase tracking-wider mx-4 sm:mx-6">
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-html5 text-orange-500 text-base sm:text-lg"></i> Web Development</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-python text-blue-500 text-base sm:text-lg"></i> Data Science</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-figma text-purple-500 text-base sm:text-lg"></i> UI/UX Design</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-solid fa-database text-emerald-500 text-base sm:text-lg"></i> SQL & Database</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-solid fa-shield-halved text-red-500 text-base sm:text-lg"></i> Cyber Security</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-react text-cyan-500 text-base sm:text-lg"></i> React & Frontend</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-laravel text-red-600 text-base sm:text-lg"></i> Laravel Framework</span>
+            </div>
+            <div
+                class="flex items-center gap-8 sm:gap-12 text-slate-500 font-semibold text-xs sm:text-sm uppercase tracking-wider mx-4 sm:mx-6">
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-html5 text-orange-500 text-base sm:text-lg"></i> Web Development</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-python text-blue-500 text-base sm:text-lg"></i> Data Science</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-figma text-purple-500 text-base sm:text-lg"></i> UI/UX Design</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-solid fa-database text-emerald-500 text-base sm:text-lg"></i> SQL & Database</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-solid fa-shield-halved text-red-500 text-base sm:text-lg"></i> Cyber Security</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-react text-cyan-500 text-base sm:text-lg"></i> React & Frontend</span>
+                <span class="flex items-center gap-2"><i
+                        class="fa-brands fa-laravel text-red-600 text-base sm:text-lg"></i> Laravel Framework</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section id="courses" class="relative z-10 py-16 sm:py-20 lg:py-28 bg-[#fbf9f5] border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-tight">
+                    Course Belajar<br>
+                    <span class="text-[#0d3b28]">HMPS Sistem Informasi</span>
+                </h2>
+
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mt-6 sm:mt-8"
+                    id="categoryContainer">
+                    <button onclick="filterCategory('all')"
+                        class="category-btn active px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-[#0d3b28] text-white shadow-md">
+                        Semua
+                    </button>
+                    <button onclick="filterCategory('uiux')"
+                        class="category-btn px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 border border-slate-200 hover:border-emerald-600 hover:bg-emerald-50/50">
+                        UX/UI Design
+                    </button>
+                    <button onclick="filterCategory('security')"
+                        class="category-btn px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 border border-slate-200 hover:border-emerald-600 hover:bg-emerald-50/50">
+                        Cybersecurity
+                    </button>
+                    <button onclick="filterCategory('marketing')"
+                        class="category-btn px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 border border-slate-200 hover:border-emerald-600 hover:bg-emerald-50/50">
+                        Digital Marketing
+                    </button>
+                    <button onclick="filterCategory('web')"
+                        class="category-btn px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 border border-slate-200 hover:border-emerald-600 hover:bg-emerald-50/50">
+                        Web Dev
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course Cards Grid -->
+            <div id="courseGrid"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto w-full">
+                <!-- Content Populated dynamically via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <i class="fa-solid fa-folder-open text-4xl sm:text-5xl text-slate-300 mb-3"></i>
+                <h3 class="text-base sm:text-lg font-bold text-slate-700">Tidak ada modul ditemukan</h3>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Coba kata kunci atau kategori lain.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="relative z-10 py-16 sm:py-20 lg:py-28 bg-white text-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Wadah Pengembangan Talenta &<br>
+                    <span class="text-[#0d3b28]">Inovasi Mahasiswa Sistem Informasi</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-6xl mx-auto w-full">
+
+                <!-- Left Image Preview -->
+                <div class="lg:col-span-6">
+                    <div
+                        class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-900 group aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3]">
+
+                        <div id="aboutStepSweepLine"
+                            class="absolute top-0 bottom-0 pointer-events-none z-30 opacity-0 flex items-center justify-center">
+                            <div
+                                class="w-1.5 h-full bg-gradient-to-b from-amber-300 via-emerald-400 to-amber-300 shadow-[0_0_20px_6px_rgba(16,185,129,0.85)]">
+                            </div>
+                            <div
+                                class="absolute inset-y-0 w-32 bg-gradient-to-r from-emerald-500/30 via-amber-300/40 to-transparent blur-md">
+                            </div>
+                        </div>
+
+                        <img id="aboutStepImage"
+                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
+                            alt="Alur Pembelajaran HMPS SI"
+                            class="w-full h-full object-cover transition-all duration-500">
+
+                        <button onclick="prevAboutStep()" aria-label="Previous step"
+                            class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/85 hover:bg-white text-slate-800 shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+
+                        <button onclick="nextAboutStep()" aria-label="Next step"
+                            class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/85 hover:bg-white text-slate-800 shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 z-20">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+
+                        <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-6 max-w-[75%] z-20">
+                            <span id="aboutStepCaption"
+                                class="inline-block text-[10px] sm:text-xs font-semibold text-white bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg shadow-sm">
+                                HMPS SI: Rumah Kolaborasi & Pengembangan Potensi Mahasiswa
+                            </span>
+                        </div>
+
+                        <div id="aboutStepDots"
+                            class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full z-20">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Vertical Stepper -->
+                <div class="lg:col-span-6 pl-0 lg:pl-4">
+                    <div id="aboutStepsContainer" class="relative space-y-6 sm:space-y-8 min-h-[300px]">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a2e1e] text-emerald-100/80 border-t border-emerald-900/60 mt-auto shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-10">
+                <div class="sm:col-span-2">
+                    <div class="flex items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                        <div
+                            class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-amber-400 text-[#0d3b28] flex items-center justify-center font-bold text-sm sm:text-base shadow-sm">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-lg sm:text-xl font-bold text-white tracking-tight">HMPS SI Learning</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-emerald-100/75 max-w-sm leading-relaxed">
+                        Platform edukasi interaktif persembahan Himpunan Mahasiswa Program Studi Sistem Informasi untuk
+                        memperkuat talenta digital kampus.
+                    </p>
+                </div>
+
+                <div>
+                    <h4
+                        class="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4 tracking-wide uppercase text-emerald-400">
+                        Navigasi</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#home"
+                                class="text-emerald-100/80 hover:text-amber-400 transition-colors">Beranda</a></li>
+                        <li><a href="#courses" class="text-emerald-100/80 hover:text-amber-400 transition-colors">Modul
+                                Belajar</a></li>
+                        <li><a href="#about" class="text-emerald-100/80 hover:text-amber-400 transition-colors">Tentang
+                                HMPS SI</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4
+                        class="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4 tracking-wide uppercase text-emerald-400">
+                        Sosial Media</h4>
+                    <div class="flex gap-2.5 sm:gap-3 text-base sm:text-lg">
+                        <a href="#" target="_blank" aria-label="Instagram HMPS SI"
+                            class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-900/40 border border-emerald-800/80 flex items-center justify-center text-emerald-200 hover:text-[#0d3b28] hover:bg-amber-400 hover:border-amber-400 transition-all"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="WhatsApp HMPS SI"
+                            class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-900/40 border border-emerald-800/80 flex items-center justify-center text-emerald-200 hover:text-[#0d3b28] hover:bg-amber-400 hover:border-amber-400 transition-all"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" aria-label="GitHub HMPS SI"
+                            class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-900/40 border border-emerald-800/80 flex items-center justify-center text-emerald-200 hover:text-[#0d3b28] hover:bg-amber-400 hover:border-amber-400 transition-all"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="pt-6 sm:pt-8 border-t border-emerald-900/50 text-center text-[11px] sm:text-xs text-emerald-200/60">
+                <p>© 2026 HMPS Sistem Informasi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COURSE DETAIL MODAL -->
+    <div id="courseModal"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div
+            class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl transition-transform duration-300">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modalContent">
+                <!-- Content generated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- EXTERNAL JS MODULES -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
